@@ -14,6 +14,8 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {
@@ -21,6 +23,7 @@
     nixpkgs,
     home-manager,
     nixos-cosmic,
+    nixos-hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -78,6 +81,7 @@
               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
           }
+          nixos-hardware.nixosModules.framework-12th-gen-intel
           nixos-cosmic.nixosModules.default
           # > Our main nixos configuration file <
           ./nixos/framework/configuration.nix
@@ -89,6 +93,16 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "joshua@Desktop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home-manager/home.nix
+        ];
+      };
+    };
+    homeConfigurations = {
+      "joshua@Framework" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
