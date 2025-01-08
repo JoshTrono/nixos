@@ -1,0 +1,36 @@
+{pkgs,lib,config, inputs,...}: {
+    options = {
+        normalPackages.enable =
+            lib.mkEnableOption "enable normal";
+    } ;
+    config = lib.mkIf config.normalPackages.enable {
+        environment.systemPackages = with pkgs; [
+            discord
+            firefox
+            obsidian
+            clamav
+            clamtk
+            git
+            #brave
+            #google-chrome
+            #chromium
+            jetbrains-mono
+            fastfetch
+            thunderbird
+            #unstable.vivaldi
+        ];
+        
+          programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/joshua/nixos";
+  };
+    
+
+    services.flatpak.enable = true;
+
+    };
+
+
+}
