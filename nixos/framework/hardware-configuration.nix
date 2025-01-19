@@ -8,36 +8,20 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/693607d5-b4cc-4318-801c-e01fefc28073";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
+    { device = "/dev/disk/by-uuid/d6b40272-3371-4569-959b-613339aceb28";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/DA8A-97BA";
+    { device = "/dev/disk/by-uuid/D803-6F20";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/6a4d4d88-4fa4-4ab4-925f-78d2d509f7fe";
-      fsType = "btrfs";
-    };
-
-  fileSystems."/mnt/Games" =
-    { device = "/dev/disk/by-uuid/0a95459d-53d4-4e76-b93f-d76f2d85816b";
-      fsType = "xfs";
-    };
-
-  fileSystems."/mnt/SSD" =
-    { device = "/dev/disk/by-uuid/d4f6a0ab-6445-4f9b-93fa-63446388da49";
-      fsType = "btrfs";
     };
 
   swapDevices = [ ];
@@ -47,8 +31,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp166s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
