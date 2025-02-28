@@ -22,7 +22,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     #./gnome.nix
-    ../wm/plasma.nix
+    #../wm/plasma.nix
+    ../wm/gnome.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -36,8 +37,8 @@
   normalPackages.enable = true;
 
  # cosmic
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
   
   # Bootloader
 boot.loader = {
