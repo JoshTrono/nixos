@@ -1,7 +1,7 @@
 {...}: 
 {
     networking.firewall = {
-      enable = false;
+      enable = true;
       #AllowedTCPPorts = [ 80 443 ];
     };
 }

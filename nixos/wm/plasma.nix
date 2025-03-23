@@ -10,7 +10,7 @@
   networking.networkmanager.enable = true;
    environment.systemPackages = with pkgs; [
       pkgs.unstable.dracula-qt5-theme
-
+      kdePackages.plasma-firewall
 
    ];
 

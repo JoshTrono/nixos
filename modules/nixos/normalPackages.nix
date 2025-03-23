@@ -8,7 +8,6 @@
             discord
             firefox
             obsidian
-            clamav
             clamtk
             git
             #brave
@@ -26,9 +25,15 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/joshua/nixos";
   };
-    
-
-    services.flatpak.enable = true;
+    services = {
+        power-profiles-daemon.enable = true;
+        upower.enable = true;
+        flatpak.enable = true;
+        clamav = {
+            daemon.enable = true;
+            updater.enable = true;
+        };
+    };
 
     };
 
