@@ -11,5 +11,6 @@
   #--- Common Packages
   normalPackages = import ./normalPackages.nix;
 
+  virtualization = import ./virtualization.nix;
 }
 

@@ -20,6 +20,7 @@
     gh
     glab
     direnv
+
     #unstable.jetbrains.pycharm-professional
     python312Packages.python
     vscode

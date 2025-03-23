@@ -15,6 +15,7 @@
     outputs.nixosModules.gameModule
     outputs.nixosModules.devModule
     outputs.nixosModules.normalPackages
+    outputs.nixosModules.virtualization
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -22,8 +23,9 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     #./gnome.nix
-    #../wm/plasma.nix
-    ../wm/gnome.nix
+    ../wm/plasma.nix
+    #../wm/gnome.nix
+    #../wm/cinnomon.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
