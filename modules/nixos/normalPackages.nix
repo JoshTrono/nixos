@@ -25,6 +25,7 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/joshua/nixos";
   };
+  programs.nix-ld.enable = true;
     services = {
         power-profiles-daemon.enable = true;
         upower.enable = true;

@@ -4,13 +4,13 @@
             lib.mkEnableOption "enables dev module";
     };
     config = lib.mkIf config.devModule.enable {
+
         environment.systemPackages = with pkgs; [
     # unstable.jetbrains.rider
     # unstable.jetbrains.goland
     # unstable.jetbrains.rust-rover
     # unstable.jetbrains.ruby-mine
     # unstable.jetbrains.clion
-    dotnet-sdk_8
     cargo
     vscode
     nodejs_18
@@ -28,7 +28,9 @@
     cosign
     #vscode-extensions.esbenp.prettier-vscode
         ];
-        
+        # environment.variables = {
+        #     DOTNET_ROOT= lib.mkForce "~/.dotnet/";
+        # };
     };
 
 }

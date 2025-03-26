@@ -16,6 +16,7 @@
     outputs.nixosModules.devModule
     outputs.nixosModules.normalPackages
     outputs.nixosModules.virtualization
+    #outputs.nixosModules.dotnetModule
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -32,6 +33,37 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+
+# environment = let
+#     dotnet-combined = (with pkgs.dotnetCorePackages; combinePackages [
+#       sdk_8_0
+#       sdk_9_0
+#     ]).overrideAttrs (finalAttrs: previousAttrs: {
+#       # This is needed to install workload in $HOME
+#       # https://discourse.nixos.org/t/dotnet-maui-workload/20370/2
+
+#       postBuild = (previousAttrs.postBuild or '''') + ''
+#         for i in $out/sdk/*
+#         do
+#           i=$(basename $i)
+#           mkdir -p $out/metadata/workloads/''${i/-*}
+#           touch $out/metadata/workloads/''${i/-*}/userlocal
+#         done
+#       '';
+#     });
+#   in
+#   {
+#     sessionVariables = {
+#       DOTNET_ROOT = "${dotnet-combined}";
+#     };
+#     systemPackages = [
+#       dotnet-combined
+#     ];
+#   };
+  
+
+
+
   zramSwap = {
   enable = true;
   };
