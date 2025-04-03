@@ -6,11 +6,11 @@
     config = lib.mkIf config.devModule.enable {
 
         environment.systemPackages = with pkgs; [
-    # unstable.jetbrains.rider
-    # unstable.jetbrains.goland
-    # unstable.jetbrains.rust-rover
-    # unstable.jetbrains.ruby-mine
-    # unstable.jetbrains.clion
+    jetbrains.rider
+    jetbrains.goland
+    jetbrains.rust-rover
+    #dotnet-sdk_8
+    #dotnetCorePackages.dotnet_8.sdk
     cargo
     vscode
     nodejs_18
@@ -20,6 +20,7 @@
     gh
     glab
     direnv
+    unstable.devenv
 
     #unstable.jetbrains.pycharm-professional
     python312Packages.python
@@ -31,6 +32,10 @@
         # environment.variables = {
         #     DOTNET_ROOT= lib.mkForce "~/.dotnet/";
         # };
+
+    environment.sessionVariables = rec {
+DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "true";
+  };
     };
 
 }

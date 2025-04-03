@@ -27,8 +27,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     #./gnome.nix
-    ../wm/plasma.nix
-    #../wm/gnome.nix
+    #../wm/plasma.nix
+    ../wm/gnome.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -61,8 +61,6 @@
 #     ];
 #   };
   
-
-
 
   zramSwap = {
   enable = true;
@@ -150,6 +148,7 @@ boot.loader = {
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "networkmanager" "audio" "docker"];
+      
     };
   };
 

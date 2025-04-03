@@ -10,8 +10,8 @@
             obsidian
             clamtk
             git
-            #brave
-            #google-chrome
+            brave
+            google-chrome
             #chromium
             jetbrains-mono
             fastfetch

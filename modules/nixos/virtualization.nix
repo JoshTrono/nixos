@@ -2,7 +2,11 @@
 
       services.open-webui.enable = true;
       services.ollama.enable = true;
-      virtualisation.virtualbox.host.enable = true;
-      virtualisation.virtualbox.guest.enable = true;
-      virtualisation.virtualbox.host.enableExtensionPack = true;
+programs.virt-manager.enable = true;
+
+users.groups.libvirtd.members = ["joshua"];
+
+virtualisation.libvirtd.enable = true;
+
+virtualisation.spiceUSBRedirection.enable = true;
 }
