@@ -8,36 +8,36 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8127e7a3-6fa3-41a6-bada-e86513f2684a";
+    { device = "/dev/disk/by-uuid/c5dea1a8-2eb7-4309-a49a-94df3d88911d";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/33BD-36E0";
+    { device = "/dev/disk/by-uuid/A2BC-BA6D";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/c83c1727-67b3-446c-8f14-430d120409a9";
-      fsType = "btrfs";
-    };
-
-  fileSystems."/mnt/SSD" =
-    { device = "/dev/disk/by-uuid/d4f6a0ab-6445-4f9b-93fa-63446388da49";
+    { device = "/dev/disk/by-uuid/62370b6c-9df0-4d74-8656-9756b2d0b0dd";
       fsType = "btrfs";
     };
 
   fileSystems."/mnt/Games" =
     { device = "/dev/disk/by-uuid/0a95459d-53d4-4e76-b93f-d76f2d85816b";
       fsType = "xfs";
+    };
+
+  fileSystems."/mnt/SSD" =
+    { device = "/dev/disk/by-uuid/d4f6a0ab-6445-4f9b-93fa-63446388da49";
+      fsType = "btrfs";
     };
 
   swapDevices = [ ];

@@ -16,6 +16,7 @@
             jetbrains-mono
             fastfetch
             thunderbird
+            firewalld
             #unstable.vivaldi
         ];
         

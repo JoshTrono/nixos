@@ -21,7 +21,7 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
-    ../../configs/security/firewall.nix
+    
     ../../configs/essentials/printing.nix
 
     # You can also split up your configuration and import pieces of it here:
